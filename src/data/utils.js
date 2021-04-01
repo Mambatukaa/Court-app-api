@@ -17,7 +17,12 @@ export const uploadfile = async (file, dirname) => {
 };
 
 export const uploadFileToES = async file => {
-  const { AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, AWS_BUCKET, AWS_PREFIX = '' } = process.env;
+  const {
+    AWS_ACCESS_KEY_ID,
+    AWS_SECRET_ACCESS_KEY,
+    AWS_BUCKET,
+    AWS_PREFIX = ''
+  } = process.env;
 
   // check credentials
   if (!(AWS_ACCESS_KEY_ID || AWS_SECRET_ACCESS_KEY || AWS_BUCKET)) {
@@ -27,7 +32,7 @@ export const uploadFileToES = async file => {
   // initialize s3
   const s3 = new AWS.S3({
     accessKeyId: AWS_ACCESS_KEY_ID,
-    secretAccessKey: AWS_SECRET_ACCESS_KEY,
+    secretAccessKey: AWS_SECRET_ACCESS_KEY
   });
 
   // generate unique name
@@ -43,7 +48,7 @@ export const uploadFileToES = async file => {
         Bucket: AWS_BUCKET,
         Key: fileName,
         Body: buffer,
-        ACL: 'public-read',
+        ACL: 'public-read'
       },
       (error, response) => {
         if (error) {
@@ -51,7 +56,7 @@ export const uploadFileToES = async file => {
         }
 
         return resolve(response);
-      },
+      }
     );
   });
 
@@ -88,21 +93,24 @@ export const sendEmail = async (email, password) => {
 
   if (NODE_ENV === 'test') return;
 
-  const html = await applyTemplate({ content: password }, 'resetPasswordAndUsername');
+  const html = await applyTemplate(
+    { content: password },
+    'resetPasswordAndUsername'
+  );
   const transport = nodemailer.createTransport(
     sgTransport({
       auth: {
         api_user: `${API_USER}`,
-        api_key: `${API_KEY}`,
-      },
-    }),
+        api_key: `${API_KEY}`
+      }
+    })
   );
 
   const mailOptions = {
     from: `${FROM_EMAIL}`,
     to: email,
     subject: 'Бүртгэл баталгаажуулах',
-    html,
+    html
   };
 
   return transport.sendMail(mailOptions, (error, info) => {
@@ -122,16 +130,16 @@ export const sendEmailForgotPassword = async (email, link) => {
     sgTransport({
       auth: {
         api_user: `${API_USER}`,
-        api_key: `${API_KEY}`,
-      },
-    }),
+        api_key: `${API_KEY}`
+      }
+    })
   );
 
   const mailOptions = {
     from: `${FROM_EMAIL}`,
     to: email,
     subject: 'Нууц үг солих',
-    html,
+    html
   };
 
   return transport.sendMail(mailOptions, (error, info) => {
@@ -151,16 +159,16 @@ export const sendEmailMessage = async (email, message) => {
     sgTransport({
       auth: {
         api_user: `${API_USER}`,
-        api_key: `${API_KEY}`,
-      },
-    }),
+        api_key: `${API_KEY}`
+      }
+    })
   );
 
   const mailOptions = {
     from: `${FROM_EMAIL}`,
     to: email,
-    subject: 'hurteemj.edu.mn',
-    html,
+    subject: 'mamba.edu.mn',
+    html
   };
 
   return transport.sendMail(mailOptions, (error, info) => {
