@@ -26,7 +26,9 @@ const courtSchema = mongoose.Schema({
   },
   warning: {
     type: String
-  }
+  },
+  parking: { type: String },
+  courtDetail: { type: String }
 });
 
 class Court {
