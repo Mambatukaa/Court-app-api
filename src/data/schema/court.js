@@ -15,12 +15,13 @@ export const types = `
     image: String
 
     price: String
-    location: LocationType
     description: String
   
     warning: String
     parking: String
     courtDetail: String
+
+    location: LocationType
   }
   input LocationInput {
     lat: Float
