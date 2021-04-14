@@ -7,7 +7,10 @@ const courtSchema = mongoose.Schema({
   ownerId: { type: String },
   image: String,
   price: { type: Number },
-  locations: { type: [Number] },
+  location: {
+    lat: Number,
+    lng: Number,
+  },
   description: {
     type: String,
     trim: true,

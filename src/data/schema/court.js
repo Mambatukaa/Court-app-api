@@ -1,4 +1,11 @@
 export const types = `
+
+  type LocationType {
+    lat: Float
+    lng: Float
+  }
+
+
   type Court {
     _id: String
     createdAt: Date
@@ -8,12 +15,16 @@ export const types = `
     image: String
 
     price: String
-    locations: [Float]
+    location: LocationType
     description: String
   
     warning: String
     parking: String
     courtDetail: String
+  }
+  input LocationInput {
+    lat: Float
+    lng: Float
   }
 `;
 
@@ -22,7 +33,7 @@ const commonFields = `
   shortName: String,
   image: String
   price: String
-  locations: [Float]
+  location: LocationInput
   description: String
 
   warning: String
