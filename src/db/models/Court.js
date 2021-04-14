@@ -2,33 +2,21 @@ import mongoose from 'mongoose';
 
 const courtSchema = mongoose.Schema({
   createdDate: { type: Date, default: Date.now() },
-  name: { type: String, unique: true },
+  name: { type: String },
   shortName: { type: String },
   ownerId: { type: String },
-  images: [String],
+  image: String,
   price: { type: Number },
-  locations: [
-    {
-      type: {
-        type: String,
-        default: 'Point',
-        enum: ['Point']
-      },
-      coordinates: [Number],
-      address: String,
-      description: String,
-      day: Number
-    }
-  ],
+  locations: { type: [Number] },
   description: {
     type: String,
-    trim: true
+    trim: true,
   },
   warning: {
-    type: String
+    type: String,
   },
   parking: { type: String },
-  courtDetail: { type: String }
+  courtDetail: { type: String },
 });
 
 class Court {
@@ -36,7 +24,7 @@ class Court {
   static async createCourt(doc) {
     const court = this.create({
       createdDate: Date.now(),
-      ...doc
+      ...doc,
     });
     return court;
   }
