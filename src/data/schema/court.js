@@ -49,7 +49,11 @@ export const mutations = `
     removeCourt(_id:String!): JSON
 `;
 
+const queryParams = `
+  searchValue: String
+`;
+
 export const queries = `
     courtDetail(_id: String!): Court 
-    allCourts: [Court]
+    allCourts(${queryParams}): [Court]
 `;

@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 
 const courtSchema = mongoose.Schema({
   createdDate: { type: Date, default: Date.now() },
+  searchText: { type: String },
   name: { type: String },
   shortName: { type: String },
   ownerId: { type: String },
@@ -27,6 +28,7 @@ class Court {
   static async createCourt(doc) {
     const court = this.create({
       createdDate: Date.now(),
+      searchText: doc.name,
       ...doc,
     });
     return court;
