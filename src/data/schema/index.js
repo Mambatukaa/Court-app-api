@@ -8,13 +8,19 @@ import {
   mutations as BookingMutations,
 } from './booking';
 
+import {
+  types as ScheduleTypes,
+  queries as ScheduleQueries,
+  mutations as ScheduleMutations,
+} from './schedule';
+
 export const types = `
   scalar JSON
   scalar Date
   ${UserTypes}
   ${CourtTypes}
   ${BookingTypes}
-
+  ${ScheduleTypes}
 `;
 
 export const queries = `
@@ -23,7 +29,7 @@ export const queries = `
     ${UserQueries}
     ${CourtQueries}
     ${BookingQueries}
-
+    ${ScheduleQueries}
   }
 `;
 
@@ -33,5 +39,6 @@ export const mutations = `
     ${UserMutations}
     ${CourtMutations}
     ${BookingMutations}
+    ${ScheduleMutations}
   }
 `;
