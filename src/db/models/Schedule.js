@@ -5,12 +5,12 @@ const scheduleSchema = mongoose.Schema({
 
   courtId: { type: String },
   day: Date,
-  startTime: Date,
-  endTime: Date,
+  startTime: String,
+  endTime: String,
 });
 
 class Schedule {
-  static async createSchedule(_root, doc) {
+  static async createSchedule(doc) {
     const schedule = this.create({
       createdDate: Date.now(),
       ...doc,
