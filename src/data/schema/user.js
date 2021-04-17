@@ -32,7 +32,7 @@ const params = `
 
 export const queries = `
     users(page: Int, perPage: Int, searchValue: String, 
-        role: String, email: String, phone: String, username: String): [User]
+    role: String, email: String, phone: String, username: String): [User]
     userDetail(_id: String): User
     currentUser: User
     usersCount(role: String, isBanned: Boolean): Int

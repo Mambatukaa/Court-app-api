@@ -3,11 +3,7 @@ import jwt from 'jsonwebtoken';
 import sha256 from 'sha256';
 import bcrypt from 'bcrypt';
 import { ROLES } from '../../data/constants';
-import {
-  sendEmail,
-  sendEmailForgotPassword,
-  sendEmailMessage
-} from '../../data/utils';
+import { sendEmail, sendEmailForgotPassword, sendEmailMessage } from '../../data/utils';
 import { field } from './utils';
 
 const SALT_WORK_FACTOR = 10;
@@ -15,21 +11,19 @@ const SALT_WORK_FACTOR = 10;
 const userSchema = mongoose.Schema({
   username: {
     type: String,
-    lowercase: true
+    lowercase: true,
+    unique: true,
   },
   email: {
     type: String,
     unique: true,
     lowercase: true,
-    match: [
-      /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
-      'Please fill a valid email address'
-    ]
+    match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address'],
   },
   password: { type: String },
   role: {
     type: String,
-    enum: [ROLES.ADMIN, ROLES.EXPERT, ROLES.USER]
+    enum: [ROLES.ADMIN, ROLES.EXPERT, ROLES.USER],
   },
   resetPasswordToken: String,
   resetPasswordExpires: Date,
@@ -37,7 +31,7 @@ const userSchema = mongoose.Schema({
   firstName: String,
   lastName: String,
   phone: String,
-  position: String
+  position: String,
 });
 
 class User {
@@ -98,13 +92,13 @@ class User {
       _id: _user._id,
       email: _user.email,
       details: _user.details,
-      role: _user.role
+      role: _user.role,
     };
 
-    const createToken = await jwt.sign({ user }, secret, { expiresIn: '1d' });
+    const createToken = await jwt.sign({ user }, secret, { expiresIn: '3d' });
 
     const createRefreshToken = await jwt.sign({ user }, secret, {
-      expiresIn: '7d'
+      expiresIn: '7d',
     });
 
     return [createToken, createRefreshToken];
@@ -132,15 +126,12 @@ class User {
     const user = await Users.findOne({ _id });
 
     // recreate tokens
-    const [newToken, newRefreshToken] = await this.createTokens(
-      user,
-      this.getSecret()
-    );
+    const [newToken, newRefreshToken] = await this.createTokens(user, this.getSecret());
 
     return {
       token: newToken,
       refreshToken: newRefreshToken,
-      user
+      user,
     };
   }
 
@@ -148,16 +139,7 @@ class User {
    * Create user
    * SuperAdmin, Admin can create user
    */
-  static async createUser({
-    username,
-    email,
-    password,
-    role,
-    avatar,
-    firstName,
-    lastName,
-    phone
-  }) {
+  static async createUser({ username, email, password, role, avatar, firstName, lastName, phone }) {
     if (password === '') {
       throw new Error('Password can not be empty');
     }
@@ -172,7 +154,7 @@ class User {
       avatar,
       firstName,
       lastName,
-      phone
+      phone,
     });
   }
 
@@ -182,7 +164,7 @@ class User {
    */
   static async updateUser(
     _id,
-    { username, email, password, role, avatar, firstName, lastName, phone }
+    { username, email, password, role, avatar, firstName, lastName, phone },
   ) {
     const doc = {
       username,
@@ -192,7 +174,7 @@ class User {
       avatar,
       firstName,
       lastName,
-      phone
+      phone,
     };
 
     await Users.checkDuplication({ email }, _id);
@@ -215,10 +197,7 @@ class User {
     return Users.remove({ _id });
   }
 
-  static async editProfile(
-    _id,
-    { username, email, avatar, firstName, lastName, phone, position }
-  ) {
+  static async editProfile(_id, { username, email, avatar, firstName, lastName, phone, position }) {
     await Users.checkDuplication({ email }, _id);
 
     await Users.updateOne(
@@ -231,9 +210,9 @@ class User {
           firstName,
           lastName,
           phone,
-          position
-        }
-      }
+          position,
+        },
+      },
     );
 
     return Users.findOne({ _id });
@@ -244,8 +223,8 @@ class User {
     const user = await this.findOne({
       resetPasswordToken: token,
       resetPasswordExpires: {
-        $gt: Date.now()
-      }
+        $gt: Date.now(),
+      },
     });
 
     if (!user) {
@@ -262,8 +241,8 @@ class User {
       {
         password: await this.generatePassword(newPassword),
         resetPasswordToken: undefined,
-        resetPasswordExpires: undefined
-      }
+        resetPasswordExpires: undefined,
+      },
     );
 
     return this.findOne({ _id: user._id });
@@ -294,8 +273,8 @@ class User {
     await Users.findByIdAndUpdate(
       { _id: user._id },
       {
-        password: await this.generatePassword(newPassword)
-      }
+        password: await this.generatePassword(newPassword),
+      },
     );
 
     return this.findOne({ _id: user._id });
@@ -324,8 +303,8 @@ class User {
       { _id: user._id },
       {
         resetPasswordToken: token,
-        resetPasswordExpires: Date.now() + 86400000
-      }
+        resetPasswordExpires: Date.now() + 86400000,
+      },
     );
 
     const link = `${process.env.FRONT_DOMAIN}/reset-password?token=${token}`;
@@ -356,7 +335,7 @@ class User {
     return await this.create({
       email,
       password: await this.generetePasswordRegister(email),
-      role: ROLES.MEMBER
+      role: ROLES.MEMBER,
     });
   }
 
@@ -380,8 +359,8 @@ class User {
       $or: [
         { email: { $regex: new RegExp(input, 'i') } },
         { username: { $regex: new RegExp(input, 'i') } },
-        { phone: { $regex: new RegExp(input, 'i') } }
-      ]
+        { phone: { $regex: new RegExp(input, 'i') } },
+      ],
     });
 
     if (!user) {
@@ -396,14 +375,11 @@ class User {
     }
 
     // create tokens
-    const [token, refreshToken] = await this.createTokens(
-      user,
-      this.getSecret()
-    );
+    const [token, refreshToken] = await this.createTokens(user, this.getSecret());
 
     return {
       token,
-      refreshToken
+      refreshToken,
     };
   }
 }
