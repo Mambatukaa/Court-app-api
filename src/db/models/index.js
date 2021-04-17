@@ -1,4 +1,5 @@
 import Users from './User';
-import Court from './Court';
+import Courts from './Court';
+import Bookings from './Booking';
 
-export { Users, Court };
+export { Users, Courts, Bookings };
