@@ -7,26 +7,46 @@ const userMutations = {
    * @param {String} password - user password
    * @return {Promise} AuthPayload - token, refresh token
    */
-  login(root, args) {
-    return Users.login(args);
+  async login(_root, args, { res }) {
+    const response = await Users.login(args);
+
+    const { token } = response;
+
+    const oneDay = 1 * 24 * 3600 * 1000; // 1 day
+
+    const cookieOptions = {
+      httpOnly: true,
+      expires: new Date(Date.now() + oneDay),
+      maxAge: oneDay,
+    };
+
+    const { NODE_ENV } = process.env;
+
+    if (NODE_ENV === 'production') {
+      cookieOptions.secure = true;
+    }
+
+    res.cookie('auth-token', token, cookieOptions);
+
+    return response;
   },
 
-  userCreate(root, doc) {
+  userCreate(_root, doc) {
     return Users.createUser({ ...doc });
   },
 
-  userUpdate(root, { _id, ...doc }) {
+  userUpdate(_root, { _id, ...doc }) {
     return Users.updateUser(_id, doc);
   },
 
-  userRemove(root, { _id }) {
+  userRemove(_root, { _id }) {
     return Users.removeUser({ _id });
   },
 
   async profileEdit(
-    root,
+    _root,
     { username, email, password, avatar, firstName, lastName, phone, position },
-    { user }
+    { user },
   ) {
     const userDb = await Users.findOne({ _id: user._id });
     const valid = await Users.comparePassword(password, userDb.password);
@@ -42,30 +62,30 @@ const userMutations = {
       firstName,
       lastName,
       phone,
-      position
+      position,
     });
   },
 
-  forgotPassword(root, { email }) {
+  forgotPassword(_root, { email }) {
     return Users.forgotPassword(email);
   },
 
-  resetPassword(root, { token, newPassword }) {
+  resetPassword(_root, { token, newPassword }) {
     return Users.resetPassword({ token, newPassword });
   },
 
   // front side/
-  registerMember(root, { email }) {
+  registerMember(_root, { email }) {
     return Users.register(email);
   },
 
-  sendMessage(root, { userId, message }) {
+  sendMessage(_root, { userId, message }) {
     return Users.sendMessage({ userId, message });
   },
 
-  usersChangePassword(root, doc, { user }) {
+  usersChangePassword(_root, doc, { user }) {
     return Users.changePassword({ _id: user._id, ...doc });
-  }
+  },
 };
 
 export default userMutations;

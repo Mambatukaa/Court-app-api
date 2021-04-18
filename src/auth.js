@@ -8,7 +8,8 @@ import { Users } from './db/models';
  * @param {Function} next - Next function
  */
 export const userMiddleware = async (req, res, next) => {
-  const token = req.headers['x-token'];
+  const token = req.cookies['auth-token'];
+
   if (token) {
     try {
       // verify user token and retrieve stored user information
