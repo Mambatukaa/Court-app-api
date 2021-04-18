@@ -16,6 +16,8 @@ import { connect } from './db/connection';
 // load environment variables
 dotenv.config();
 
+const { MAIN_APP_DOMAIN } = process.env;
+
 // connect to mongo database
 connect();
 
@@ -25,7 +27,12 @@ app.use(bodyParser.json({ limit: '10mb', extended: true }));
 app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
 app.use(cookieParser());
 
-app.use(cors());
+const corsOptions = {
+  credentials: true,
+  origin: [MAIN_APP_DOMAIN],
+};
+app.use(cors(corsOptions));
+
 app.use(userMiddleware);
 
 app.use(
