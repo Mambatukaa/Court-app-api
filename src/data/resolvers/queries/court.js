@@ -30,11 +30,15 @@ const courtQueries = {
       return 'user not found';
     }
 
+    let courts;
+
     if (user.role === 'admin') {
-      return await Courts.find();
+      courts = await Courts.find();
     } else {
-      return await Courts.find({ ownderId: user._id });
+      courts = await Courts.find({ ownerId: user._id });
     }
+
+    return courts;
 
     /* {
       user.role === 'admin'
