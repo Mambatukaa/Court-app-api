@@ -31,6 +31,7 @@ const params = `
 `;
 
 export const queries = `
+    allUsers: [User]
     users(page: Int, perPage: Int, searchValue: String, 
     role: String, email: String, phone: String, username: String): [User]
     userDetail(_id: String): User
@@ -45,6 +46,7 @@ export const mutations = `
     userRemove(_id: String): User
 
     login(input: String!, password: String!): AuthPayload
+    logout: String
     registerMember(email: String!): User
     profileEdit(
         username: String,

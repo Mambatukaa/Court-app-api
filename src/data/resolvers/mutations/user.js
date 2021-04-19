@@ -31,6 +31,12 @@ const userMutations = {
     return response;
   },
 
+  async logout(_root, args, { res }) {
+    res.clearCookie('auth-token');
+
+    return 'logout';
+  },
+
   userCreate(_root, doc) {
     return Users.createUser({ ...doc });
   },

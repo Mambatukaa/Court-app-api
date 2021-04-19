@@ -139,7 +139,16 @@ class User {
    * Create user
    * SuperAdmin, Admin can create user
    */
-  static async createUser({ username, email, password, role, avatar, firstName, lastName, phone }) {
+  static async createUser({
+    username,
+    email,
+    password,
+    role = 'user',
+    avatar,
+    firstName,
+    lastName,
+    phone,
+  }) {
     if (password === '') {
       throw new Error('Password can not be empty');
     }
@@ -364,14 +373,14 @@ class User {
     });
 
     if (!user) {
-      throw new Error('Invalid login');
+      throw new Error('Нэвтрэх нэр эсвэл нууц үг буруу байна.');
     }
 
     const valid = await this.comparePassword(password, user.password);
 
     if (!valid) {
       // bad password
-      throw new Error('Invalid login12');
+      throw new Error('Нэвтрэх нэр эсвэл нууц үг буруу байна.');
     }
 
     // create tokens

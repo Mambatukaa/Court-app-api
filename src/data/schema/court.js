@@ -1,8 +1,8 @@
 export const types = `
 
   type LocationType {
-    lat: Float
-    lng: Float
+    lat: String
+    lng: String
   }
 
 
@@ -23,9 +23,10 @@ export const types = `
 
     location: LocationType
   }
+
   input LocationInput {
-    lat: Float
-    lng: Float
+    lat: String
+    lng: String
   }
 `;
 
@@ -34,7 +35,10 @@ const commonFields = `
   shortName: String,
   image: String
   price: String
-  location: LocationInput
+
+  lat: String
+  lng: String
+
   description: String
 
   warning: String
@@ -56,4 +60,5 @@ const queryParams = `
 export const queries = `
     courtDetail(_id: String!): Court 
     allCourts(${queryParams}): [Court]
+    courts: [Court]
 `;

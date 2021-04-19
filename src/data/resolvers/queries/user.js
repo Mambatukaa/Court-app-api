@@ -8,7 +8,7 @@ const queryBuilder = async params => {
     const fields = [
       { 'details.fullname': new RegExp(`.*${params.searchValue}.*`, 'i') },
       { email: new RegExp(`.*${params.searchValue}.*`, 'i') },
-      { username: new RegExp(`.*${params.searchValue}.*`, 'i') }
+      { username: new RegExp(`.*${params.searchValue}.*`, 'i') },
     ];
     selector = { $or: fields };
   }
@@ -37,6 +37,12 @@ const userQueries = {
     const users = paginate(Users.find(selector));
 
     return users.sort({ username: -1 });
+  },
+
+  async allUsers() {
+    const users = await Users.find();
+
+    return users;
   },
 
   userDetail(root, { _id }) {
@@ -75,7 +81,7 @@ const userQueries = {
     }
 
     return Users.find(selector).countDocuments();
-  }
+  },
 };
 
 export default userQueries;

@@ -29,6 +29,10 @@ class Court {
     const court = this.create({
       createdDate: Date.now(),
       searchText: doc.name,
+      location: {
+        lat: doc.lat,
+        lng: doc.lng,
+      },
       ...doc,
     });
     return court;
