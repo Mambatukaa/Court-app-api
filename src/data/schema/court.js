@@ -22,6 +22,8 @@ export const types = `
     courtDetail: String
 
     location: LocationType
+
+    courtSchedule: [Schedule]
   }
 
   input LocationInput {
