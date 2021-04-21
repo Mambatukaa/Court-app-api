@@ -40,7 +40,9 @@ class Court {
 
   /** Update Court */
   static async editCourt(_id, doc) {
-    return this.updateOne({ _id }, { $set: { ...doc } });
+    await this.updateOne({ _id }, { $set: { ...doc } });
+
+    return this.findById(_id);
   }
 
   /** Remove Court */

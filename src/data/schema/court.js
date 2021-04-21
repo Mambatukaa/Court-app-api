@@ -31,8 +31,8 @@ export const types = `
 `;
 
 const commonFields = `
-  name: String,
-  shortName: String,
+  name: String
+  shortName: String
   image: String
   price: String
 
@@ -49,7 +49,7 @@ const commonFields = `
 
 export const mutations = `
     courtsAdd(${commonFields}): Court
-    courtEdit(_id: String!, name: String, shortName: String): JSON
+    courtEdit(_id: String! ${commonFields}): Court
     removeCourt(_id:String!): JSON
 `;
 

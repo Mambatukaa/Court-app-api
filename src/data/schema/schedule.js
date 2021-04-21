@@ -2,17 +2,15 @@ export const types = `
    type Schedule{
         _id: String
         courtId: String
-        day: Date
-        startTime: String
-        endTime: String
+        startTime: Date
+        endTime: Date
     }
 `;
 
 const commonFields = `
-    courtId: String!
-    day: Date!
-    starTime: String!
-    endTime: String!
+    courtId: String
+    startTime: Date
+    endTime: Date
 `;
 
 export const mutations = `

@@ -10,7 +10,7 @@ const courtMutations = {
 
   /** Edit court */
   async courtEdit(root, { _id, ...doc }) {
-    const updated = Courts.editCourt(_id, { ...doc });
+    const updated = await Courts.editCourt(_id, { ...doc });
 
     return updated;
   },
