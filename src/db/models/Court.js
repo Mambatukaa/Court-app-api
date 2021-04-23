@@ -12,6 +12,7 @@ const courtSchema = mongoose.Schema({
     lat: Number,
     lng: Number,
   },
+  slotSize: Number,
   description: {
     type: String,
     trim: true,

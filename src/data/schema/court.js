@@ -15,7 +15,7 @@ export const types = `
     image: String
 
     description: String
-  
+    slotSize: Float
     warning: String
     parking: String
     courtDetail: String
@@ -39,6 +39,7 @@ const commonFields = `
   lat: String
   lng: String
 
+  slotSize: Float
   description: String
 
   warning: String
