@@ -4,10 +4,10 @@ const courtSchema = mongoose.Schema({
   createdDate: { type: Date, default: Date.now() },
   searchText: { type: String },
   name: { type: String },
-  shortName: { type: String },
+  // shortName: { type: String }, // hereggui
   ownerId: { type: String },
-  image: String,
-  price: { type: Number },
+  image: String, // olon zurag bna
+  // price: { type: Number }, // zahialgan dr une bna
   location: {
     lat: Number,
     lng: Number,
@@ -20,7 +20,7 @@ const courtSchema = mongoose.Schema({
     type: String,
   },
   parking: { type: String },
-  courtDetail: { type: String },
+  courtDetail: { type: String }, // heregguie
 });
 
 class Court {

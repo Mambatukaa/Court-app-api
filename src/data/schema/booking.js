@@ -11,14 +11,17 @@ export const types = `
     }
 
     type Booking {
+        _id: String!
         courtId: String
         userId: String
-        date: DateType
+        date: Date
         status: String
+        scheduleId: String
     }
 `;
 
 export const queries = `
+    bookingDetails(userId: String!): [Booking]
 `;
 
 const commonFields = `
@@ -26,6 +29,7 @@ const commonFields = `
     userId: String!
     date: Date
     status: String!
+    scheduleId: String!
 `;
 
 export const mutations = `

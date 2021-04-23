@@ -11,10 +11,9 @@ export const types = `
     createdAt: Date
     
     name: String
-    shortName: String
+    
     image: String
 
-    price: String
     description: String
   
     warning: String
@@ -36,7 +35,6 @@ const commonFields = `
   name: String
   shortName: String
   image: String
-  price: String
 
   lat: String
   lng: String

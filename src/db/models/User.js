@@ -31,7 +31,7 @@ const userSchema = mongoose.Schema({
   firstName: String,
   lastName: String,
   phone: String,
-  position: String,
+  position: String, // hereggui
 });
 
 class User {

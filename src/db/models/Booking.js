@@ -2,6 +2,8 @@ import mongoose from 'mongoose';
 
 const bookingSchema = mongoose.Schema({
   createdDate: { type: Date, default: Date.now() },
+  scheduleId: { type: String },
+  //schedule slot id
   userId: { type: String },
   courtId: { type: String },
   date: { type: Date },
