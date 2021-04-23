@@ -18,7 +18,8 @@
     "format": "prettier --write --print-width 100 --single-quote --trailing-comma all 'src/**/*.js'",
     "precommit": "lint-staged",
     "test": "jest --runInBand --coverage",
-    "loadInitialUser": "babel-node ./src/initialUser.js"
+    "loadInitialUser": "babel-node ./src/initialUser.js",
+    "loadInitialData": "babel-node ./src/initialData.js"
   },
   "lint-staged": {
     "*.js": [
