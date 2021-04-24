@@ -91,7 +91,7 @@ export const factoriesFactory = async () => {
       'https://www.nba.com/resources/static/team/v2/heat/custom-projects/2018-19_Uniforms/imgs/vice-nights-court-1.jpg',
   });
 
-  await courtFactory({
+  const court1 = await courtFactory({
     name: 'Спортын төв ордон',
     parking: 'Үнэгүй',
     courtDetail: 'FIBA стандарт шал',
@@ -107,14 +107,57 @@ export const factoriesFactory = async () => {
   const schedule = await scheduleFactory({
     courtId: court._id,
     day: '2021-04-23 05:18:00.623Z',
+    startTime: 'Fri Apr 23 2021 10:00:00 GMT+0800 (Ulaanbaatar Standard Time)',
+    endTime: 'Fri Apr 23 2021 11:00:00 GMT+0800 (Ulaanbaatar Standard Time)',
+    price: 30000,
+  });
+
+  const schedule1 = await scheduleFactory({
+    courtId: court._id,
+    day: '2021-04-23 05:18:00.623Z',
+    startTime: 'Fri Apr 23 2021 11:00:00 GMT+0800 (Ulaanbaatar Standard Time)',
+    endTime: 'Fri Apr 23 2021 12:00:00 GMT+0800 (Ulaanbaatar Standard Time)',
+    price: 60000,
+  });
+
+  await scheduleFactory({
+    courtId: court1._id,
+    day: '2021-04-23 05:18:00.623Z',
+    startTime: 'Fri Apr 23 2021 12:00:00 GMT+0800 (Ulaanbaatar Standard Time)',
+    endTime: 'Fri Apr 23 2021 13:00:00 GMT+0800 (Ulaanbaatar Standard Time)',
+    price: 20000,
+  });
+  await scheduleFactory({
+    courtId: court._id,
+    day: '2021-04-23 05:18:00.623Z',
+    startTime: 'Fri Apr 23 2021 13:00:00 GMT+0800 (Ulaanbaatar Standard Time)',
+    endTime: 'Fri Apr 23 2021 14:00:00 GMT+0800 (Ulaanbaatar Standard Time)',
+    price: 40000,
+  });
+  await scheduleFactory({
+    courtId: court1._id,
+    day: '2021-04-23 05:18:00.623Z',
     startTime: 'Fri Apr 23 2021 14:00:00 GMT+0800 (Ulaanbaatar Standard Time)',
     endTime: 'Fri Apr 23 2021 15:00:00 GMT+0800 (Ulaanbaatar Standard Time)',
     price: 30000,
+  });
+  await scheduleFactory({
+    courtId: court1._id,
+    day: '2021-04-23 05:18:00.623Z',
+    startTime: 'Fri Apr 23 2021 16:00:00 GMT+0800 (Ulaanbaatar Standard Time)',
+    endTime: 'Fri Apr 23 2021 17:00:00 GMT+0800 (Ulaanbaatar Standard Time)',
+    price: 50000,
   });
 
   await bookingFactory({
     courtId: court._id,
     userId: user._id,
     scheduleId: schedule._id,
+  });
+
+  await bookingFactory({
+    courtId: court._id,
+    userId: user._id,
+    scheduleId: schedule1._id,
   });
 };

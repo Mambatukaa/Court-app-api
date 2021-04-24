@@ -28,7 +28,7 @@ const commonFields = `
     courtId: String!
     userId: String!
     date: Date
-    status: String!
+    status: String
     scheduleId: String!
 `;
 
