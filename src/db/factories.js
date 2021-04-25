@@ -104,7 +104,106 @@ export const factoriesFactory = async () => {
       'https://i2.wp.com/homesoftherich.net/wp-content/uploads/2014/12/Screen-Shot-2014-12-15-at-2.32.06-AM.png',
   });
 
-  const schedule = await scheduleFactory({
+  await courtFactory({
+    name: 'Наадам центр',
+    parking: 'Үнэгүй',
+    courtDetail: 'Олон улсын стандарт шал',
+    warning: 'Заалны зориулалтын пүүз болон 2 өөр өнгийн подволктой ирэх',
+    description: 'Олон улсын стандарт хангасан спорт заал',
+    slotSize: 15,
+    lat: 47.9027591743968,
+    lng: 106.91191292901968,
+    image:
+      'http://content.page.mn/uploads/users/224/images/18951006_1054469008021390_5781497061314247735_n.jpg',
+  });
+
+  await courtFactory({
+    name: 'Логарифм ЕБС',
+    parking: 'Үнэгүй',
+    courtDetail: 'Олон улсын стандарт шал',
+    warning: 'Заалны зориулалтын пүүз болон 2 өөр өнгийн подволктой ирэх',
+    description: 'Олон улсын стандарт хангасан спорт заал',
+    slotSize: 15,
+    lat: 47.92232523633226,
+    lng: 106.92701225230482,
+    image:
+      'https://cdn.greensoft.mn/uploads/users/227/images/37849302_1681252238669257_1902992999747420160_n.jpg',
+  });
+
+  await courtFactory({
+    name: 'Мон алтиус',
+    parking: 'Үнэгүй',
+    courtDetail: 'NBA стандарт шал',
+    warning: 'Заалны зориулалтын пүүз болон 2 өөр өнгийн подволктой ирэх',
+    description: 'Олон улсын стандарт хангасан спорт заал',
+    slotSize: 15,
+    lat: 47.91793734910583,
+    lng: 106.88599709833399,
+    image: 'https://cugoldeneagles.com/images/2019/7/11/CU_Facilities_Digital_11.jpg',
+  });
+
+  await courtFactory({
+    name: 'Нэгдүгээр сургууль',
+    parking: 'Байхгүй',
+    courtDetail: 'NBA стандарт шал',
+    warning: 'Заалны зориулалтын пүүз болон 2 өөр өнгийн подволктой ирэх',
+    description: 'Олон улсын стандарт хангасан цэвэрхэн спорт заал',
+    slotSize: 15,
+    lat: 47.915560349494385,
+    lng: 106.91191291367696,
+    image: 'https://www.ryerson.ca/content/dam/recreation/Facilities/CCC_737wv2.jpg',
+  });
+
+  await courtFactory({
+    name: '31-р сургууль',
+    parking: 'Байхгүй',
+    courtDetail: 'Энгийн мод',
+    warning: 'Заалны зориулалтын пүүз болон 2 өөр өнгийн подволктой ирэх',
+    description: 'Стандарт хангасан цэвэрхэн спорт заал',
+    slotSize: 15,
+    lat: 47.910019809404425,
+    lng: 106.90846995415491,
+    image: 'https://cugoldeneagles.com/images/2019/7/11/CU_Facilities_Digital_12.jpg',
+  });
+
+  await courtFactory({
+    name: '5-р сургууль',
+    parking: 'Байхгүй',
+    courtDetail: 'Энгийн мод',
+    warning: 'Заалны зориулалтын пүүз болон 2 өөр өнгийн подволктой ирэх',
+    description: 'Стандарт хангасан цэвэрхэн спорт заал',
+    slotSize: 15,
+    lat: 47.925083778104145,
+    lng: 106.91147866764796,
+    image: 'https://news.nd.edu/assets/320255/1000x562/rolfs_athletic_hall_27_feature.jpg',
+  });
+
+  await courtFactory({
+    name: '12-р сургууль',
+    parking: 'Байхгүй',
+    courtDetail: 'Стандарт резин шал',
+    warning: 'Заалны зориулалтын пүүз болон 2 өөр өнгийн подволктой ирэх',
+    description: 'Стандарт хангасан цэвэрхэн спорт заал',
+    slotSize: 15,
+    lat: 47.91298829761568,
+    lng: 106.81768342813743,
+    image:
+      'https://athletics.rose-hulman.edu/images/2020/6/18/Hulbert_Arena.jpg?width=600&height=360&mode=crop',
+  });
+
+  await courtFactory({
+    name: '84-р сургууль',
+    parking: 'Байхгүй',
+    courtDetail: 'Стандарт резин шал',
+    warning: 'Заалны зориулалтын пүүз болон 2 өөр өнгийн подволктой ирэх',
+    description: 'Олон улсын стандарт хангасан цэвэрхэн спорт заал',
+    slotSize: 15,
+    lat: 47.916176605941125,
+    lng: 106.93943324495287,
+    image: 'https://jbuathletics.com/images/2016/8/14//20140729_ms1_athletics_facilities_8743.jpg',
+  });
+
+  /*   const schedule = await scheduleFactory({
     courtId: court._id,
     day: '2021-04-23 05:18:00.623Z',
     startTime: 'Fri Apr 23 2021 10:00:00 GMT+0800 (Ulaanbaatar Standard Time)',
@@ -159,5 +258,5 @@ export const factoriesFactory = async () => {
     courtId: court._id,
     userId: user._id,
     scheduleId: schedule1._id,
-  });
+  }); */
 };
