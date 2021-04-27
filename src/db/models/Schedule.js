@@ -5,8 +5,8 @@ const scheduleSchema = mongoose.Schema({
   // court slots
   courtId: { type: String },
   day: Date,
-  startTime: String,
-  endTime: String,
+  startTime: Date,
+  endTime: Date,
   price: String,
 });
 
@@ -18,6 +18,12 @@ class Schedule {
     });
 
     return schedule;
+  }
+
+  static async deleteSchedule(_id) {
+    await this.deleteOne(_id);
+
+    return 'deleted';
   }
 }
 

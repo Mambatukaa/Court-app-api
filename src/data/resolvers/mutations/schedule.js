@@ -10,6 +10,11 @@ const scheduleMutations = {
 
     return schedule;
   },
+
+  /** S0chedule delete */
+  async schedulesDelete(_root, _id) {
+    return await Schedules.deleteSchedule(_id);
+  },
 };
 
 export default scheduleMutations;

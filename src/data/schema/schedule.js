@@ -26,6 +26,7 @@ const queryParams = `
 
 export const mutations = `
     schedulesAdd(${commonFields}): Schedule
+    schedulesDelete(_id: String!): String
 `;
 
 export const queries = `
