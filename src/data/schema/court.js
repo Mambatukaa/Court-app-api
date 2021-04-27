@@ -23,6 +23,8 @@ export const types = `
     location: LocationType
 
     courtSchedule: [Schedule]
+
+    ownerId: String
   }
 
   input LocationInput {
@@ -45,6 +47,8 @@ const commonFields = `
   warning: String
   parking: String
   courtDetail: String
+
+  ownerId: String
 
 `;
 
