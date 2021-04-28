@@ -16,7 +16,7 @@ const scheduleQueries = {
   async allSchedules(_root, params) {
     const filter = await generateFilter(params);
 
-    return await Schedules.find(filter);
+    return await Schedules.find(filter).sort({ startTime: 1 });
   },
 
   async scheduleDetail(_root, { _id }) {
