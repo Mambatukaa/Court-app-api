@@ -1,4 +1,4 @@
-import { Schedules } from '../../../db/models';
+import { Schedules, Bookings } from '../../../db/models';
 
 const scheduleMutations = {
   /**
@@ -13,6 +13,7 @@ const scheduleMutations = {
 
   /** S0chedule delete */
   async schedulesDelete(_root, _id) {
+    await Bookings.deleteOne({ scheduleId: _id });
     return await Schedules.deleteSchedule(_id);
   },
 };

@@ -7,7 +7,7 @@ const generateFilter = async params => {
     filter._id = { $in: params.ids };
   }
 
-  filter.day = { $gt: new Date().toISOString() };
+  filter.startTime = { $gt: new Date().toISOString() };
 
   return filter;
 };
