@@ -367,7 +367,7 @@ class User {
     const user = await Users.findOne({
       $or: [
         { email: { $regex: new RegExp(input, 'i') } },
-        { username: { $regex: new RegExp(input, 'i') } },
+        { username: input },
         { phone: { $regex: new RegExp(input, 'i') } },
       ],
     });
