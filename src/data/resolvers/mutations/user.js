@@ -20,11 +20,11 @@ const userMutations = {
       maxAge: oneDay,
     };
 
-    const { NODE_ENV } = process.env;
+    /* const { NODE_ENV } = process.env;
 
     if (NODE_ENV === 'production') {
       cookieOptions.secure = true;
-    }
+    } */
 
     res.cookie('auth-token', token, cookieOptions);
 
