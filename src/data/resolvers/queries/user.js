@@ -31,7 +31,7 @@ const queryBuilder = async params => {
 };
 
 const userQueries = {
-  async users(root, doc) {
+  async users(_root, doc) {
     const selector = await queryBuilder(doc);
 
     const users = paginate(Users.find(selector));
@@ -45,7 +45,7 @@ const userQueries = {
     return users;
   },
 
-  userDetail(root, { _id }) {
+  userDetail(_root, { _id }) {
     return Users.findOne({ _id });
   },
 
@@ -53,15 +53,15 @@ const userQueries = {
     return await Users.find({ role: 'expert' });
   },
 
-  currentUser(root, doc, { user }) {
+  async currentUser(_root, doc, { user }) {
     if (user) {
-      return Users.findOne({ _id: user._id, isActive: { $ne: false } });
+      return await Users.findOne({ _id: user._id });
     }
 
     return null;
   },
 
-  async usersCount(root, doc) {
+  async usersCount(_root, doc) {
     let selector = {};
 
     if (doc.role) {
