@@ -59,7 +59,9 @@ export const mutations = `
 `;
 
 const queryParams = `
-  searchValue: String
+  searchValue: String,
+  minPrice: String,
+  maxPrice: String
 `;
 
 export const queries = `

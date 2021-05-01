@@ -6,7 +6,6 @@ const bookingSchema = mongoose.Schema({
   //schedule slot id
   userId: { type: String },
   courtId: { type: String },
-  date: { type: Date },
   status: { type: String },
 });
 

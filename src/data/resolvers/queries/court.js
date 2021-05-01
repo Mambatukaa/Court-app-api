@@ -1,10 +1,16 @@
-import Courts from '../../../db/models/Court';
+import { Courts, Schedules } from '../../../db/models';
 
 const generateFilter = async params => {
   const filter = {};
 
   if (params.searchValue) {
     filter.searchText = { $in: [new RegExp(`.*${params.searchValue}.*`, 'i')] };
+  }
+
+  if (params.minPrice && params.maxPrice) {
+    filter._id = await Schedules.find({
+      price: { $gt: params.minPrice, $lt: params.maxPrice },
+    }).distinct('courtId');
   }
 
   return filter;
@@ -39,12 +45,6 @@ const courtQueries = {
     }
 
     return courts;
-
-    /* {
-      user.role === 'admin'
-        ? await Courts.find()
-        : await Courts.find({ ownerId: user._id });
-    } */
   },
 };
 export default courtQueries;
