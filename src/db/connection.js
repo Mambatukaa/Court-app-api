@@ -25,7 +25,9 @@ if (!isTest) {
 export function connect() {
   return mongoose
     .connect(DB_URI, {
-      useMongoClient: true
+      keepAlive: true,
+      reconnectTries: Number.MAX_VALUE,
+      useMongoClient: true,
     })
     .then(() => {
       // empty (drop) database before running tests
