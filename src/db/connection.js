@@ -25,8 +25,6 @@ if (!isTest) {
 export function connect() {
   return mongoose
     .connect(DB_URI, {
-      keepAlive: true,
-      reconnectTries: Number.MAX_VALUE,
       useMongoClient: true,
     })
     .then(() => {
