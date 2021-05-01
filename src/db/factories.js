@@ -71,12 +71,12 @@ export const scheduleFactory = async (params = {}) => {
 };
 
 export const factoriesFactory = async () => {
-  const user = await userFactory({
+  /* const user = await userFactory({
     username: 'mambatukaa',
     email: 'sbatuka9@gmail.com',
     password: 'Sankobe1',
     role: 'admin',
-  });
+  }); */
 
   const court = await courtFactory({
     name: 'Монгол Улсын Их Сургууль',

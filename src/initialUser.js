@@ -11,10 +11,11 @@ export const importData = async () => {
   // create AOEH user
   await Users.createUser({
     username: 'admin',
-    password: 'admin',
+    password: 'admin0830',
+    email: 'admin@gmail.com',
     role: ROLES.ADMIN,
     firstName: 'admin',
-    lastName: 'admin'
+    lastName: 'admin',
   });
 
   disconnect();
