@@ -1,7 +1,6 @@
 export const types = `
    type Schedule{
         _id: String
-        day: Date
         courtId: String
         startTime: Date
         endTime: Date
@@ -13,7 +12,6 @@ export const types = `
 `;
 
 const commonFields = `
-    day: Date
     courtId: String
     startTime: Date
     endTime: Date

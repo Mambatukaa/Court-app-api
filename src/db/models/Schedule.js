@@ -2,9 +2,7 @@ import mongoose from 'mongoose';
 
 const scheduleSchema = mongoose.Schema({
   createdDate: { type: Date, default: Date.now() },
-  // court slots
   courtId: { type: String },
-  day: Date,
   startTime: Date,
   endTime: Date,
   price: String,
