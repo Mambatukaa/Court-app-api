@@ -5,7 +5,7 @@ const scheduleSchema = mongoose.Schema({
   courtId: { type: String },
   startTime: Date,
   endTime: Date,
-  price: String,
+  price: Number,
 });
 
 class Schedule {

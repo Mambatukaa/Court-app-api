@@ -9,7 +9,7 @@ const generateFilter = async params => {
 
   if (params.minPrice && params.maxPrice) {
     filter._id = await Schedules.find({
-      price: { $gt: params.minPrice, $lt: params.maxPrice },
+      price: { $gte: Number(params.minPrice), $lte: Number(params.maxPrice) },
     }).distinct('courtId');
   }
 

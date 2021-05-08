@@ -4,7 +4,7 @@ export const types = `
         courtId: String
         startTime: Date
         endTime: Date
-        price: String
+        price: Float
 
         bookedPeople: Float
         scheduledCourt: Court
@@ -15,7 +15,7 @@ const commonFields = `
     courtId: String
     startTime: Date
     endTime: Date
-    price: String
+    price: Float
 `;
 
 const queryParams = `
