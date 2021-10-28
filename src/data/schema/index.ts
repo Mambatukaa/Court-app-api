@@ -10,6 +10,9 @@ import {
 } from './user';
 
 export let types = `
+  scalar JSON
+  scalar Date
+
   ${CourtTypes}
   ${UserTypes}
 `;

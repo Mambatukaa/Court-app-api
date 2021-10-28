@@ -20,6 +20,6 @@ const commonMutationParams = `
 export const mutations = `
   usersCreate(${commonMutationParams}): User
   usersEdit(_id: String! ${commonMutationParams}): User
-  usersRemove(_id: String!): String
+  usersRemove(_id: String!): JSON
   login(email: String! password: String!): String
 `;
