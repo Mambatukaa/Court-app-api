@@ -12,11 +12,14 @@ export const queries = `
 const commonMutationParams = `
   firstName: String
   lastName: String
+  email: String
   phone: String
+  password: String
 `;
 
 export const mutations = `
-  usersAdd(${commonMutationParams}): User
+  usersCreate(${commonMutationParams}): User
   usersEdit(_id: String! ${commonMutationParams}): User
   usersRemove(_id: String!): String
+  login(email: String! password: String!): String
 `;

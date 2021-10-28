@@ -1,3 +1,4 @@
 import Courts from './Courts';
+import Users from './Users';
 
-export { Courts };
+export { Courts, Users };

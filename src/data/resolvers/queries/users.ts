@@ -1,4 +1,4 @@
-import Users from '../../../db/models/Users';
+import { Users } from '../../../db/models';
 
 const userQueries = {
   userDetail(_root, { _id }: { _id: string }) {
