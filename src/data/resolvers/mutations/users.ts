@@ -38,6 +38,12 @@ const userMutations = {
 
   login(_root, args: ILogin, { res, requestInfo }: IContext) {
     return login(args, res, requestInfo.secure);
+  },
+
+  logout(_root, _args, { res }: IContext) {
+    res.clearCookie('auth-token');
+
+    return 'logged out';
   }
 };
 

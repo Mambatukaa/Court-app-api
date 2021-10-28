@@ -12,9 +12,9 @@ export const queries = `
 const commonMutationParams = `
   firstName: String
   lastName: String
-  email: String
+  email: String!
   phone: String
-  password: String
+  password: String!
 `;
 
 export const mutations = `
@@ -22,4 +22,5 @@ export const mutations = `
   usersEdit(_id: String! ${commonMutationParams}): User
   usersRemove(_id: String!): JSON
   login(email: String! password: String!): String
+  logout: String
 `;
