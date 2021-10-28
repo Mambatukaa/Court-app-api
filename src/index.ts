@@ -7,6 +7,9 @@ import * as cors from 'cors';
 import { connect } from './db/connection';
 import { types, mutations, queries } from './data/schema';
 import resolvers from './data/resolvers';
+import { getEnv } from './data/utils';
+
+dotenv.config();
 
 const typeDefs = gql`
   ${types}
@@ -20,7 +23,7 @@ const typeDefs = gql`
   }
 `;
 
-dotenv.config();
+const MAIN_APP_DOMAIN = getEnv({ name: 'MAIN_APP_DOMAIN' });
 
 const { PORT } = process.env;
 
@@ -32,7 +35,7 @@ const httpServer = createServer(app);
 
 const corsOptions = {
   credentials: true,
-  origin: ['http://localhost:3000']
+  origin: [MAIN_APP_DOMAIN]
 };
 
 app.use(cors(corsOptions));
@@ -44,7 +47,7 @@ httpServer.listen(PORT, (): void => {
     resolvers
   });
 
-  apolloServer.applyMiddleware({ app, path: '/graphql' });
+  apolloServer.applyMiddleware({ app, path: '/graphql', cors: corsOptions });
 
   console.log(`\n🚀      GraphQL is now running on ${PORT}`);
 });
