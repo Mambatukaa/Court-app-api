@@ -1,7 +1,7 @@
 import * as jwt from 'jsonwebtoken';
 import { Users } from '../db/models';
 
-const userMiddleWare = (req, res, next) => {
+const userMiddleWare = (req, _res, next) => {
   const token = req.cookies['auth-token'];
 
   if (token) {
@@ -10,8 +10,7 @@ const userMiddleWare = (req, res, next) => {
 
       req.user = user;
     } catch (e: any) {
-      console.log(e.message);
-      console.log(res);
+      return next();
     }
   }
 
