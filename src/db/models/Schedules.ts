@@ -1,8 +1,13 @@
 import { Model, model } from 'mongoose';
-import { IScheduleDocument, scheduleSchema } from './defintions/schedule';
+import {
+  ISchedule,
+  IScheduleDocument,
+  scheduleSchema
+} from './defintions/schedule';
 
 export interface IScheduleModel extends Model<IScheduleDocument> {
   getSchedule(_id: string): Promise<IScheduleDocument>;
+  createSchedule(docFields: ISchedule): Promise<IScheduleDocument>;
 }
 
 const loadClass = () => {
@@ -15,6 +20,12 @@ const loadClass = () => {
       }
 
       return schedule;
+    }
+
+    public static async createSchedule(docFields: ISchedule) {
+      return Schedules.create({
+        ...docFields
+      });
     }
   }
 
