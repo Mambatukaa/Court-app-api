@@ -16,6 +16,12 @@ import {
   types as BookingTypes
 } from './booking';
 
+import {
+  mutations as ScheduleMutations,
+  queries as ScheduleQueries,
+  types as SchedulesTypes
+} from './schedule';
+
 export let types = `
   scalar JSON
   scalar Date
@@ -23,18 +29,21 @@ export let types = `
   ${CourtTypes}
   ${UserTypes}
   ${BookingTypes}
+  ${SchedulesTypes}
 `;
 
 export let mutations = `
   ${CourtMutations}
   ${UserMutations}
   ${BookingMutations}
+  ${ScheduleMutations}
 `;
 
 export let queries = `
   ${CourtQueries}
   ${UserQueries}
   ${BookingQueries}
+  ${ScheduleQueries}
 `;
 
 export default {
