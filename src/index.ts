@@ -12,6 +12,12 @@ import { initApolloServer } from './apolloClient';
 
 dotenv.config();
 
+const { JWT_TOKEN_SECRET } = process.env;
+
+if (!JWT_TOKEN_SECRET) {
+  throw new Error('Please configure JWT_TOKEN_SECRET in environment variable.');
+}
+
 const MAIN_APP_DOMAIN = getEnv({ name: 'MAIN_APP_DOMAIN' });
 const PORT = getEnv({ name: 'PORT' });
 
