@@ -35,3 +35,5 @@ const Bookings = model<IBookingDocument, IBookingModel>(
   'bookings',
   bookingSchema
 );
+
+export default Bookings;
