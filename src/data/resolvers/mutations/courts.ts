@@ -1,12 +1,10 @@
 import { Courts } from '../../../db/models';
+import { ICourt } from '../../../db/models/defintions/courts';
+import { IContext } from '../../types';
 
 const courtMutations = {
-  async addCourt(_root, { title }: { title: string }) {
-    const court = await Courts.createCourt({
-      title
-    });
-
-    return court;
+  async courtsAdd(_root, args: ICourt, { user }: IContext) {
+    return Courts.createCourt(args, user._id);
   }
 };
 

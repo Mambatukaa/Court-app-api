@@ -4,24 +4,29 @@ import { courtSchema, ICourt, ICourtDocument } from './defintions/courts';
 
 export interface ICourtModel extends Model<ICourtDocument> {
   getCourt(_id: string): Promise<ICourtDocument>;
-  createCourt(docFields: ICourt): Promise<ICourtDocument>;
+  createCourt(docFields: ICourt, userId: string): Promise<ICourtDocument>;
 }
 
 export const loadClass = () => {
   class Court {
     public static async getCourt(_id: string) {
-      const checklist = await Courts.findOne({ _id });
+      const court = await Courts.findOne({ _id });
 
-      if (!checklist) {
-        throw new Error('Checklist not found');
+      if (!court) {
+        throw new Error('court not found');
       }
 
-      return checklist;
+      return court;
     }
 
-    public static async createCourt(doc: ICourt) {
+    public static async createCourt(doc: ICourt, userId: string) {
+      if (!userId) {
+        throw new Error('userId must be supplied');
+      }
+
       const court = await Courts.create({
-        ...doc
+        ...doc,
+        createdBy: userId
       });
 
       return court;
