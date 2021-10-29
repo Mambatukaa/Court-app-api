@@ -21,7 +21,8 @@ export interface ICourtDocument extends ICourt, Document {
 export const commonFields = {
   createdDate: field({ type: Date, optional: true, label: 'Created Date' }),
   createdBy: field({ type: String, optional: true, label: 'Created by' }),
-  modifiedBy: field({})
+  modifiedDate: field({ type: String, optional: true, label: 'Modified Date' }),
+  modifiedBy: field({ type: String, optional: true, label: 'Modified by' })
 };
 
 export const courtSchema = new Schema({
