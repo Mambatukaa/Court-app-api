@@ -7,7 +7,10 @@ import {
 
 export interface IScheduleModel extends Model<IScheduleDocument> {
   getSchedule(_id: string): Promise<IScheduleDocument>;
-  createSchedule(docFields: ISchedule): Promise<IScheduleDocument>;
+  createSchedule(
+    docFields: ISchedule,
+    userId: string
+  ): Promise<IScheduleDocument>;
 }
 
 const loadClass = () => {
@@ -22,7 +25,11 @@ const loadClass = () => {
       return schedule;
     }
 
-    public static async createSchedule(docFields: ISchedule) {
+    public static async createSchedule(docFields: ISchedule, userId: string) {
+      if (!userId) {
+        throw new Error('userId must be supplied');
+      }
+
       return Schedules.create({
         ...docFields
       });
