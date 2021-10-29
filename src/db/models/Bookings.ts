@@ -7,19 +7,31 @@ import {
 
 export interface IBookingModel extends Model<IBookingDocument> {
   getBooking(_id: string): Promise<IBookingDocument>;
-  createBooking(docFields: IBooking): Promise<IBookingDocument>;
+  createBooking(docFields: IBooking, userId: string): Promise<IBookingDocument>;
 }
 
 const loadClass = () => {
   class Booking {
     public static async getBooking(_id) {
-      return Bookings.findOne({ _id });
+      const booking = await Bookings.findOne({ _id });
+
+      if (!booking) {
+        throw new Error('Booking not found');
+      }
+
+      return booking;
     }
 
-    public static async createBooking(docFields: IBooking) {
+    public static async createBooking(docFields: IBooking, userId: string) {
+      if (!userId) {
+        throw new Error('userId must be supplied');
+      }
+
       return Bookings.create({
         ...docFields,
-        createdDate: new Date()
+        isActive: true,
+        createdDate: new Date(),
+        createdBy: userId
       });
     }
   }

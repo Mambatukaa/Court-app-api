@@ -4,8 +4,8 @@ import { field } from './utils';
 
 export interface IBooking {
   scheduleId: string;
-  userId: string;
-  status: string;
+  courtId: string;
+  isActive: boolean;
 }
 
 export interface IBookingDocument extends ICommonFields, IBooking {
@@ -15,7 +15,7 @@ export interface IBookingDocument extends ICommonFields, IBooking {
 export const bookingSchema = new Schema({
   _id: field({ pkey: true }),
   scheduleId: field({ type: String, label: 'Schedule' }),
-  userId: field({ type: String, label: 'User' }),
-  status: field({ type: String, label: 'Status' }),
+  courtId: field({ type: String, label: 'Court' }),
+  isActive: field({ type: Boolean, label: 'Is active' }),
   ...commonFields
 });
