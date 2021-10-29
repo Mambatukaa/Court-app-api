@@ -1,5 +1,4 @@
 export const types = `
-
   type Location {
     latitude: String
     longitude: String
@@ -30,7 +29,6 @@ const commonMutationParams = `
   parking: String
   ownerId: String
   warning: String
-  location: Location
   courtDetail: String
   slotSize: String
 `;
