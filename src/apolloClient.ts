@@ -43,7 +43,7 @@ export const initApolloServer = async () => {
     resolvers,
     playground,
     uploads: false,
-    context: (req, res) => {
+    context: ({ req, res }) => {
       const user = req && req.user ? req.user : null;
 
       const requestInfo = {

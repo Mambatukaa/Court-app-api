@@ -16,11 +16,14 @@ interface ILogin {
 const login = async (args: ILogin, res: express.Response, secure: boolean) => {
   const response = await Users.login(args);
 
-  const { token } = response;
+  const { token, refreshToken } = response;
 
   res.cookie('auth-token', token, authCookieOptions(secure));
 
-  return 'logged in';
+  return {
+    token,
+    refreshToken
+  };
 };
 
 const userMutations = {
