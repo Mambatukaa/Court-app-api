@@ -12,6 +12,7 @@ export const types = `
     parking: String
     ownerId: String
     warning: String
+    
     location: Location
     courtDetail: String
     slotSize: String
@@ -20,6 +21,7 @@ export const types = `
 
 export const queries = `
   courtDetail(_id: String!): Court 
+  courtsMain: [Court]
 `;
 
 const commonMutationParams = `

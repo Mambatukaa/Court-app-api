@@ -14,6 +14,7 @@ export const types = `
 
 export const queries = `
   userDetail(_id: String!): User
+  currentUser: User
 `;
 
 const commonMutationParams = `
