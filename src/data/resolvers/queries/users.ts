@@ -8,6 +8,10 @@ const userQueries = {
 
   currentUser(_root, _params, { user }: IContext) {
     return Users.findOne({ _id: user._id });
+  },
+
+  allUsers(_root) {
+    return Users.find({});
   }
 };
 

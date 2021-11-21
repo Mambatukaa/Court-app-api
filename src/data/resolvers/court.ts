@@ -1,5 +1,8 @@
+import { Schedules } from '../../db/models';
+import { ICourtDocument } from '../../db/models/defintions/courts';
+
 export default {
-  size() {
-    return 'hhahah';
+  courtSchedule(court: ICourtDocument) {
+    return Schedules.find({ courtId: court._id });
   }
 };

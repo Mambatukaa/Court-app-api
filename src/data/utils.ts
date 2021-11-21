@@ -26,3 +26,13 @@ export const authCookieOptions = (secure: boolean) => {
 
   return cookieOptions;
 };
+
+export const validSearchText = (values: string[]) => {
+  const value = values.join(' ');
+
+  if (value.length < 512) {
+    return value;
+  }
+
+  return value.substring(0, 511);
+};

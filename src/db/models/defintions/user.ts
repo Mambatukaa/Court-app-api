@@ -9,6 +9,7 @@ export interface IUser {
   email: string;
   createdAt?: Date;
   password: string;
+  role: string;
 }
 
 export interface IUserDocument extends IUser {
@@ -25,5 +26,6 @@ export const userSchema = new Schema({
   phone: field({ type: Number, optional: true, label: 'Phone' }),
   email: field({ type: String, optional: true, label: 'Email' }),
   password: field({ type: String }),
+  role: field({ type: String }),
   createdAt: field({ type: Date, label: 'Created At' })
 });

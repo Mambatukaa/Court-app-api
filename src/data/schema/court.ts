@@ -1,7 +1,7 @@
 export const types = `
   type Location {
-    latitude: String
-    longitude: String
+    latitude: Float
+    longitude: Float
   }
 
   type Court {
@@ -9,32 +9,40 @@ export const types = `
     name: String
     description: String
 
+    image: String
     parking: String
     ownerId: String
     warning: String
     
     location: Location
-    courtDetail: String
-    slotSize: String
+
+    courtSchedule: [Schedule]
+  }
+
+  input LocationInput {
+    latitude: Float
+    longitude: Float
   }
 `;
 
 export const queries = `
   courtDetail(_id: String!): Court 
-  courtsMain: [Court]
+  courtsMain(searchValue: String): [Court]
 `;
 
 const commonMutationParams = `
   name: String
   description: String
+  image: String
 
   parking: String
   ownerId: String
   warning: String
-  courtDetail: String
-  slotSize: String
+  location: LocationInput
 `;
 
 export const mutations = `
   courtsAdd(${commonMutationParams}): Court
+  courtsEdit(_id: String!, ${commonMutationParams}): Court
+  courtsRemove(_id: String!): JSON
 `;

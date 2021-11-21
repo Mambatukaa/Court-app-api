@@ -9,11 +9,12 @@ export const types = `
 
 export const queries = `
   bookingDetail(_id: String!): Booking
+  userBookings(userId: String!): [Booking]
 `;
 
 const bookingMutationParams = `
-  courtId: String
-  scheduleId: String
+  courtId: String!
+  scheduleId: String!
 `;
 
 export const mutations = `

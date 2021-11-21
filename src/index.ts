@@ -18,7 +18,7 @@ if (!JWT_TOKEN_SECRET) {
   throw new Error('Please configure JWT_TOKEN_SECRET in environment variable.');
 }
 
-const MAIN_APP_DOMAIN = getEnv({ name: 'MAIN_APP_DOMAIN' });
+// const MAIN_APP_DOMAIN = getEnv({ name: 'MAIN_APP_DOMAIN' });
 const PORT = getEnv({ name: 'PORT' });
 
 connect();
@@ -34,7 +34,7 @@ app.use(cookieParser());
 
 const corsOptions = {
   credentials: true,
-  origin: [MAIN_APP_DOMAIN]
+  origin: ['http://localhost:3000', 'http://127.0.0.1:3000']
 };
 
 app.use(cors(corsOptions));

@@ -5,8 +5,14 @@ const courtQueries = {
     return Courts.getCourt(_id);
   },
 
-  courtsMain(_root, _params, _context) {
-    return Courts.find();
+  courtsMain(_root, { searchValue }: { searchValue: string }, _context) {
+    const filter: any = {};
+
+    if (searchValue) {
+      filter.searchText = new RegExp(`${searchValue}`, 'i');
+    }
+
+    return Courts.find(filter).sort({ createdDate: 1 });
   }
 };
 

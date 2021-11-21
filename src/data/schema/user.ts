@@ -3,7 +3,9 @@ export const types = `
     _id: String!
     firstName: String
     lastName: String
+    email: String
     username: String
+    role: String
   }
 
   type AuthPayload {
@@ -15,10 +17,12 @@ export const types = `
 export const queries = `
   userDetail(_id: String!): User
   currentUser: User
+  allUsers: [User]
 `;
 
 const commonMutationParams = `
   email: String!
+  username: String!
   password: String!
 `;
 

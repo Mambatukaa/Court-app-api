@@ -9,8 +9,8 @@ export interface ICommonFields {
 }
 
 export interface ILocation {
-  latitude: string;
-  longitude: string;
+  latitude: number;
+  longitude: number;
 }
 export interface ICourt {
   name: string;
@@ -20,18 +20,21 @@ export interface ICourt {
   ownerId: string;
   warning: string;
   location: ILocation;
-  courtDetail: string;
-  slotSize: string;
+  image: string;
+  searchText: string;
 }
 
 export interface ICourtDocument extends ICourt, ICommonFields, Document {
   _id: string;
 }
 
-export const locationSchema = new Schema({
-  latitude: field({ type: String, label: 'Latitude' }),
-  longitude: field({ type: String, label: 'longitude' })
-});
+export const locationSchema = new Schema(
+  {
+    latitude: field({ type: String, label: 'Latitude' }),
+    longitude: field({ type: String, label: 'longitude' })
+  },
+  { _id: false }
+);
 
 // Mongoose schemas =======================
 
@@ -46,16 +49,16 @@ export const commonFields = {
 export const courtSchema = new Schema({
   _id: field({ pkey: true }),
   name: field({ type: String, label: 'Title' }),
-  description: field({ type: String, label: 'Description' }),
-
+  description: field({ type: String, optional: true, label: 'Description' }),
   parking: field({ type: String, label: 'Parking' }),
+
   ownerId: field({ type: String, label: 'Owner' }),
   warning: field({ type: String, label: 'Warning' }),
+  image: field({ type: String, label: 'Image' }),
+  searchText: field({ type: String, label: 'Search text' }),
   location: field({
     type: locationSchema
   }),
-  courtDetail: field({ type: String, label: 'Court detail' }),
-  slotSize: field({ type: String, label: 'Slot' }),
 
   ...commonFields
 });
