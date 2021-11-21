@@ -22,6 +22,8 @@ export interface ICourt {
   location: ILocation;
   image: string;
   searchText: string;
+  surface?: string;
+  format?: string;
 }
 
 export interface ICourtDocument extends ICourt, ICommonFields, Document {
@@ -51,11 +53,13 @@ export const courtSchema = new Schema({
   name: field({ type: String, label: 'Title' }),
   description: field({ type: String, optional: true, label: 'Description' }),
   parking: field({ type: String, label: 'Parking' }),
-
   ownerId: field({ type: String, label: 'Owner' }),
   warning: field({ type: String, label: 'Warning' }),
   image: field({ type: String, label: 'Image' }),
+
   searchText: field({ type: String, label: 'Search text' }),
+  surface: field({ type: String, label: 'Surface' }),
+  format: field({ type: String, optional: true, label: 'Surface' }),
   location: field({
     type: locationSchema
   }),

@@ -13,7 +13,8 @@ export const types = `
     parking: String
     ownerId: String
     warning: String
-    
+    surface: String
+    format: String
     location: Location
 
     courtSchedule: [Schedule]
@@ -38,6 +39,7 @@ const commonMutationParams = `
   parking: String
   ownerId: String
   warning: String
+  surface: String
   location: LocationInput
 `;
 
