@@ -20,7 +20,8 @@ export interface ICourt {
   ownerId: string;
   warning: string;
   location: ILocation;
-  image: string;
+  featuredImage: string;
+  secondaryImages: string[];
   searchText: string;
   surface?: string;
   format?: string;
@@ -55,7 +56,8 @@ export const courtSchema = new Schema({
   parking: field({ type: String, label: 'Parking' }),
   ownerId: field({ type: String, label: 'Owner' }),
   warning: field({ type: String, label: 'Warning' }),
-  image: field({ type: String, label: 'Image' }),
+  featuredImage: field({ type: String, label: 'Featured image' }),
+  secondaryImages: field({ type: String, label: 'Secondary images' }),
 
   searchText: field({ type: String, label: 'Search text' }),
   surface: field({ type: String, label: 'Surface' }),

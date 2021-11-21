@@ -9,13 +9,14 @@ export const types = `
     name: String
     description: String
 
-    image: String
+    featuredImage: String
     parking: String
     ownerId: String
     warning: String
     surface: String
     format: String
     location: Location
+    secondaryImages: [String]
 
     courtSchedule: [Schedule]
   }
@@ -34,7 +35,8 @@ export const queries = `
 const commonMutationParams = `
   name: String
   description: String
-  image: String
+  featuredImage: String
+  secondaryImages: [String]
 
   parking: String
   ownerId: String
