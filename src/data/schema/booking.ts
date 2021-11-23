@@ -3,6 +3,9 @@ export const types = `
     _id: String!
     scheduleId: String
     courtId: String
+
+    court: Court
+    schedule: Schedule
   }
 
 `;
