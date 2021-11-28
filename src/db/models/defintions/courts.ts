@@ -21,8 +21,8 @@ export interface ICourt {
   warning: string;
   location: ILocation;
   featuredImage: string;
-  secondaryImages: string[];
-  searchText: string;
+  secondaryImages?: string[];
+  searchText?: string;
   surface?: string;
   format?: string;
 }
