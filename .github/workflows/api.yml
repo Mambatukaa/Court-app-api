@@ -1,0 +1,36 @@
+name: Api CI
+
+
+on:
+  push:
+    branches: [ develop ]
+  pull_request:
+    branches: 
+      - master
+      - develop
+      
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    services: 
+      mongodb:
+        image: mongo:4.0
+        ports: 
+          - 27017:27017
+          
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Use Node.js 12.19.x
+        uses: actions/setup-node@1
+        with:
+          node-version: 12.19.x
+
+      - name: Install dependencies
+        run: |
+          yarn install
+          
+      - name: Tsc
+        run: |
+          yarn tsc
