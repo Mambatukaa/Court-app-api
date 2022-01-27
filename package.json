@@ -6,6 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "NODE_ENV=development nodemon ./src/index.ts --exec 'ts-node'",
+    "build": "tsc -p tsconfig.prod.json && cp -rf src/private dist/",
     "loadInitialData": "ts-node ./src/initialData.ts"
   },
   "author": "",

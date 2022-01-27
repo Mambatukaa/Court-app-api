@@ -6,7 +6,7 @@ import * as jwt from 'jsonwebtoken';
 const SALT_WORK_FACTOR = 10;
 
 interface ILoginParams {
-  email?: string;
+  input?: string;
   password?: string;
 }
 
@@ -100,17 +100,22 @@ const loadClass = () => {
     }
 
     public static async login({
-      email,
+      input,
       password
     }: {
-      email: string;
+      input: string;
       password: string;
     }) {
-      email = (email || '').toLowerCase().trim();
+      input = (input || '').toLowerCase().trim();
       password = (password || '').trim();
 
       const user = await Users.findOne({
-        email
+        $or: [
+          { email: input },
+          {
+            username: input
+          }
+        ]
       });
 
       if (!user || !user.password) {

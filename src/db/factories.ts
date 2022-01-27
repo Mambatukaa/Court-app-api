@@ -1,8 +1,8 @@
-import { Users, Courts, Bookings, Schedules } from "./models";
-import { IBooking } from "./models/defintions/booking";
-import { ICourt } from "./models/defintions/courts";
-import { ISchedule } from "./models/defintions/schedule";
-import { IUser } from "./models/defintions/user";
+import { Users, Courts, Bookings, Schedules } from './models';
+import { IBooking } from './models/defintions/booking';
+import { ICourt } from './models/defintions/courts';
+import { ISchedule } from './models/defintions/schedule';
+import { IUser } from './models/defintions/user';
 
 /*
  * Remove mongoose functionalities & convert to raw object
@@ -63,8 +63,8 @@ export const scheduleFactory = async (params: ISchedule) => {
   const booking = new Schedules({
     courtId: params.courtId,
     // day: params.day,
-    startTime: params.startTime,
-    endTime: params.endTime,
+    startDate: params.startDate,
+    endDate: params.endDate,
     price: params.price
   });
 
@@ -80,17 +80,17 @@ export const factoriesFactory = async () => {
   }); */
 
   await courtFactory({
-    name: "Монгол Улсын Их Сургууль",
-    parking: "Үнэгүй",
-    warning: "Заалны зориулалтын пүүз болон 2 өөр өнгийн подволктой ирэх",
-    description: "Олон улсын стандарт хангасан спорт заал",
-    ownerId: "batuka",
+    name: 'Монгол Улсын Их Сургууль',
+    parking: 'Үнэгүй',
+    warning: 'Заалны зориулалтын пүүз болон 2 өөр өнгийн подволктой ирэх',
+    description: 'Олон улсын стандарт хангасан спорт заал',
+    ownerId: 'batuka',
     location: {
       latitude: 47.925790510677025,
       longitude: 106.92164146576889
     },
-    image:
-      "https://www.nba.com/resources/static/team/v2/heat/custom-projects/2018-19_Uniforms/imgs/vice-nights-court-1.jpg"
+    featuredImage:
+      'https://www.nba.com/resources/static/team/v2/heat/custom-projects/2018-19_Uniforms/imgs/vice-nights-court-1.jpg'
   });
 
   // const court1 = await courtFactory({
