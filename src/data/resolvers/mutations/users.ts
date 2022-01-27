@@ -9,7 +9,7 @@ interface IUsersEdit extends IUser {
 }
 
 interface ILogin {
-  email?: string;
+  input: string;
   password?: string;
 }
 

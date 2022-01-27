@@ -30,6 +30,6 @@ export const mutations = `
   usersCreate(${commonMutationParams}): User
   usersEdit(_id: String! ${commonMutationParams}): User
   usersRemove(_id: String!): JSON
-  login(email: String! password: String!): AuthPayload
+  login(input: String! password: String!): AuthPayload
   logout: String
 `;
